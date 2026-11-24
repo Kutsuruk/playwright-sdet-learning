@@ -5,7 +5,7 @@ import { writeFile } from 'node:fs/promises';
 test.only('Custom tag verification', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/login');
 
-  await test.step('Run accessability with custom rule', async () => {
+  await test.step('Run accessibility with custom rule', async () => {
     const axeBuilder = await new AxeBuilder({ page }).withTags([
       'wcag2a',
       'wcag2aa',
@@ -15,12 +15,12 @@ test.only('Custom tag verification', async ({ page }) => {
 
     const accessibilityScanResults = await axeBuilder.analyze();
 
-    console.log('Accessability Scan Results:', accessibilityScanResults.violations);
+    console.log('Accessibility Scan Results:', accessibilityScanResults.violations);
     // Store a report
 
     const reportLines: string[] = [];
     if (accessibilityScanResults.violations.length > 0) {
-      reportLines.push('Accessability Violations Found:');
+      reportLines.push('Accessibility Violations Found:');
       for (const violation of accessibilityScanResults.violations) {
         reportLines.push('Violations:', violation.id);
         reportLines.push('Descriptions:', violation.description);
@@ -32,12 +32,12 @@ test.only('Custom tag verification', async ({ page }) => {
         }
       }
     } else {
-      reportLines.push('No Accessability Violations Found!');
+      reportLines.push('No Accessibility Violations Found!');
     }
 
-    const reportFilePath = 'accessability-reports/accessability-report.txt';
+    const reportFilePath = 'accessibility-reports/accessibility-report.txt';
     await writeFile(reportFilePath, reportLines.join('\n'));
 
-    expect(accessibilityScanResults.violations.length, 'Accessability violations found').toBe(0);
+    expect(accessibilityScanResults.violations.length, 'Accessibility violations found').toBe(0);
   });
 });

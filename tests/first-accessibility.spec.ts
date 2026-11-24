@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { AxeBuilder } from '@axe-core/playwright';
 
-test('General accessability check', async ({ page }) => {
+test('General accessibility check', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/login');
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-  console.log('Accessability scan results:', accessibilityScanResults.violations);
-  expect(accessibilityScanResults.violations.length, 'Accessability violations found').toBe(0);
+  console.log('Accessibility scan results:', accessibilityScanResults.violations);
+  expect(accessibilityScanResults.violations.length, 'Accessibility violations found').toBe(0);
 });
 
 test('Custom tag verification', async ({ page }) => {
@@ -18,6 +18,6 @@ test('Custom tag verification', async ({ page }) => {
 
   const accessibilityScanResults = await axeBuilder.analyze();
 
-  console.log('Accessability Scan Results:', accessibilityScanResults.violations);
-  expect(accessibilityScanResults.violations.length, 'Accessability violations found').toBe(0);
+  console.log('Accessibility Scan Results:', accessibilityScanResults.violations);
+  expect(accessibilityScanResults.violations.length, 'Accessibility violations found').toBe(0);
 });
