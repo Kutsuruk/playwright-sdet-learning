@@ -13,7 +13,7 @@ test.describe('Learning logic of assertions for SDET', () => {
 
     // 3 Negative matchers
     const formTitle = await page.locator('h5').textContent();
-    expect(headingText).not.toBe('Login in Book Store');
+    expect(formTitle).not.toBe('Register');
 
     // 4 Soft assertions
     await expect.soft(page).toHaveURL(/login/);

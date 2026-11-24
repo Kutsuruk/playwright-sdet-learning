@@ -4,7 +4,6 @@ async function addTheCheapestProductToCart(page: Page): Promise<void> {
   await page.getByRole('combobox').selectOption('lohi');
 
   const cheapestProduct = page.locator('[data-test="inventory-item"]').first();
-  await expect(cheapestProduct).toBeVisible();
   await cheapestProduct.getByRole('button', { name: 'Add to cart' }).click();
 }
 
@@ -15,8 +14,6 @@ test.describe('Locators Practise', () => {
     await page.getByText('Start Learn Playwright');
     await page.getByRole('listitem').filter({ hasText: 'Start Learn POM for Playwright' });
     await page.getByRole('button', { name: 'Clear completed' });
-
-    await page.getByRole('list').count();
   });
 });
 
@@ -25,7 +22,8 @@ test.describe('Purchasing a product', () => {
     await page.goto('https://www.saucedemo.com/');
     await page.getByPlaceholder('Username').fill('standard_user');
     await page.getByPlaceholder('Password').fill('secret_sauce');
-    await page.getByRole('button').filter({ hasText: 'Login' }).click();
+    await page.getByRole('button', { name: 'Login' }).click();
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
   });
 
   test('Login and adding item to cart', async ({ page }) => {
