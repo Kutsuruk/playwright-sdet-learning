@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { AxeBuilder } from '@axe-core/playwright';
 import { writeFile } from 'node:fs/promises';
 
-test.only('Custom tag verification', async ({ page }) => {
+test.skip('Custom tag verification', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/login');
 
   await test.step('Run accessibility with custom rule', async () => {

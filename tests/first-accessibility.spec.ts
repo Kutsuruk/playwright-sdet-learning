@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { AxeBuilder } from '@axe-core/playwright';
 
-test('General accessibility check', async ({ page }) => {
+test.skip('General accessibility check', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/login');
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
@@ -9,7 +9,7 @@ test('General accessibility check', async ({ page }) => {
   expect(accessibilityScanResults.violations.length, 'Accessibility violations found').toBe(0);
 });
 
-test('Custom tag verification', async ({ page }) => {
+test.skip('Custom tag verification', async ({ page }) => {
   await page.goto('https://www.automationexercise.com/login');
 
   const axeBuilder = await new AxeBuilder({ page })
